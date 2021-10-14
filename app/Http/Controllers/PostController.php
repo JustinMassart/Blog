@@ -14,7 +14,7 @@ class PostController extends Controller
         $filters = request()->only('search', 'category', 'author');
 
         return view('posts.index', [
-            "posts" => Post::filter($filters)->latest('published_at')->with('category', 'author')->paginate(9)->withQueryString(),
+            "posts" => Post::filter($filters)->latest('published_at')->with('category', 'author')->paginate(12)->withQueryString(),
             "page_title" => "My Blog",
             "authors" => User::whereHas('posts')->orderBy('name')->get(),
         ]);

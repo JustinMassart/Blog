@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use \App\Models\Post;
@@ -20,17 +21,6 @@ Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('h
 
 Route::get('/posts/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('post');
 
-Route::get('/authors/{author:slug}', function (User $author) {
+Route::get('/register', [RegisterController::class, 'create']);
 
-    $author->load('posts.category');
-    $posts = $author->posts->load('author');
-
-    return view('posts.index', [
-        'posts' => $posts,
-        'author' => $author,
-        'categories' => Category::whereHas('posts')
-            ->orderBy('name')
-            ->get(),
-        'page_title' => "All posts from {$author->name}"
-    ]);
-})->name('author');
+Route::post('/register', [RegisterController::class, 'store']);
