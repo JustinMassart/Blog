@@ -35,10 +35,8 @@ class RegisterController extends Controller
             request()->all() A NE JAMAIS FAIRE
 
         */
-
-        session()->flash('success', __('messages.account-created'));
-
-        return redirect('/');
+        
+        return redirect('/')->with('success', __('messages.account-created'));
 
     }
 
