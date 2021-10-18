@@ -26,7 +26,7 @@ class UserFactory extends Factory
 
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
+            'username' => Str::slug($name),
             'email' => $this->faker->email(),
             'password' => bcrypt('password'),
         ];

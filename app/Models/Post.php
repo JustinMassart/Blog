@@ -45,7 +45,6 @@ class Post extends Model
     protected $dates = [
         "published_at"
     ];
-    protected $guarded = [];
 
     public function scopeFilter($query, array $filters)
     {
@@ -61,7 +60,7 @@ class Post extends Model
 
         $query->when($filters['author'] ?? false, fn($query, $author) => $query
             ->whereHas('author', fn($query) => $query
-                ->where('slug', $author)));
+                ->where('username', $author)));
     }
 
     public function category()

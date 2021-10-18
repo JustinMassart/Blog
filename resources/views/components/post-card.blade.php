@@ -32,7 +32,7 @@
                 <div class="flex items-center text-sm">
                     <img src="/images/lary-avatar.svg" alt="Lary avatar">
                     <div class="ml-3">
-                        <a class="font-bold" href="/?author={{$post->author->slug}}">
+                        <a class="font-bold" href="/?author={{$post->author->username}}">
                             {{$post->author->name}}
                         </a>
                         <h6>Mascot at Laracasts</h6>
