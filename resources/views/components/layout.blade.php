@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="fr">
+<html lang="{{app()->getLocale()}}">
 <title>Laravel From Scratch Blog</title>
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="//unpkg.com/alpinejs" defer></script>
@@ -14,10 +14,10 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0 flex item-center">
+        <div class="mt-8 md:mt-0 flex items-center">
             @guest
                 <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                <a href="/login" class="ml-4 text-xs font-bold uppercase">Login</a>
+                <a href="/login" class="ml-6 text-xs font-bold uppercase">Login</a>
             @else
                 <span class="text-xs font-bold uppercase">Welcome back, {{ auth()->user()->name }} !</span>
 
@@ -51,8 +51,7 @@
                     </div>
 
                     <button type="submit"
-                            class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
-                    >
+                            class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8">
                         Subscribe
                     </button>
                 </form>

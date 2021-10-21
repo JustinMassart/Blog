@@ -46,6 +46,7 @@ class Post extends Model
         "published_at"
     ];
 
+// scopes
     public function scopeFilter($query, array $filters)
     {
 
@@ -63,6 +64,7 @@ class Post extends Model
                 ->where('username', $author)));
     }
 
+// relations
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -74,6 +76,11 @@ class Post extends Model
         //return $this->belongsTo(User::class);
         return $this->belongsTo(User::class, 'user_id');
 
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 

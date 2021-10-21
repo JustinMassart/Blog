@@ -27,3 +27,5 @@ Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/sessions', [SessionController::class, 'store'])->middleware('guest');
+
+Route::post('/posts/{post:slug}/comments', [\App\Http\Controllers\PostCommentsController::class, 'store'])->middleware('auth');
