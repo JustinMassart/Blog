@@ -21,6 +21,6 @@ Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('h
 
 Route::get('/posts/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('post');
 
-Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'create']);
+Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'create'])->middleware('guest');
 
-Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store']);
+Route::post('/register', [\App\Http\Controllers\RegisterController::class, 'store'])->middleware('guest');
