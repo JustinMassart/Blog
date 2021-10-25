@@ -57,32 +57,7 @@
                     </div>
                 </div>
                 <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                    @auth
-                        <x-panel>
-                            <form action="/posts/{{$post->slug}}/comments" method="POST">
-                                @csrf
-                                <header class="flex items-center">
-                                    <img src="https://i.pravatar.cc/100?u={{auth()->id()}}" alt="My pic" width="40"
-                                         height="40" class="rounded-xl">
-                                </header>
-                                <div class="mt-5">
-                            <textarea name="body" id="body" class="w-full border border-gray-200" rows="10" cols="30"
-                                      placeholder="Enter your comment here !"></textarea>
-                                </div>
-                                <div class="flex justify-end mt-5">
-                                    <button type="submit"
-                                            class="px-5 py-3 ml-3 text-xs font-semibold text-white uppercase bg-blue-500 rounded-full hover:bg-blue-800">
-                                        Post it!
-                                    </button>
-                                </div>
-                            </form>
-                        </x-panel>
-                </section>
-                @else
-                    <h3 class="font-bold text-blue-500"><a href="/login"
-                                                           class="hover:text-blue-800">Want to publish your own ? Log
-                            into your account !</a></h3>
-                @endauth
+                    @include('_add-comment-form')
                 <section class="col-span-8 col-start-5 mt-10 space-y-6">
                     @foreach($post->comments as $comment)
                         <x-panel>

@@ -9,7 +9,7 @@
 
     {{-- entries/items --}}
 
-    <div x-show="show" class="py-2 bg-gray-100 w-full mt-2 font-semibold rounded-xl absolute z-50 overflow-auto max-h-52"
+    <div x-show="show" class="overflow-auto absolute z-50 py-2 mt-2 w-full max-h-52 font-semibold bg-gray-100 rounded-xl"
          style="display:none">
         {{ $entries }}
     </div>
