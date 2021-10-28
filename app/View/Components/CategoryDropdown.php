@@ -10,11 +10,8 @@ class CategoryDropdown extends Component
     public function render()
     {
         return view('components.category-dropdown', [
-
             'categories' => Category::whereHas('posts')->orderBy('name')->get(),
-            "currentCategory" => Category::firstWhere('slug', request('category')),
-
-
+            'currentCategory' => Category::firstWhere('slug', request('category')),
         ]);
     }
 }
