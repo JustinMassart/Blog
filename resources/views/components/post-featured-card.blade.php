@@ -32,7 +32,7 @@
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                    <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="thumbnail">
                     <div class="ml-3">
                         <h5 class="text-xl font-bold">
                             <a class="font-bold" href="/?author={{$post->author->username}}">

@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('excerpt');
             $table->text('body');
+            $table->string('thumbnail_path')->nullable();
             $table->timestamps();
         });
     }

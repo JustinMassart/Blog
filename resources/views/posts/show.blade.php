@@ -10,14 +10,14 @@
         <main class="mx-auto mt-10 space-y-6 max-w-6xl lg:mt-20">
             <article class="gap-x-10 mx-auto max-w-4xl lg:grid lg:grid-cols-12">
                 <div class="col-span-4 mb-10 lg:text-center lg:pt-14">
-                    <img src="/images/illustration-1.png" alt="" class="rounded-xl">
+                    <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="Thumbnail picture" class="rounded-xl">
                     <p class="block mt-4 text-xs text-gray-400">
                         Published
                         <time>{{$post->published_at->diffForHumans()}}</time>
                     </p>
-
                     <div class="flex items-center mt-4 text-sm lg:justify-center">
-                        <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                        <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="A random picture" width="60"
+                             height="60" class="rounded-xl">
                         <div class="ml-3 text-left">
                             <h5 class="font-bold">
                                 <a href="/?author={{ $post->author->username }}">{{$post->author->name}}</a>
@@ -58,13 +58,13 @@
                 </div>
                 <section class="col-span-8 col-start-5 mt-10 space-y-6">
                     @include('_add-comment-form')
-                <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                    @foreach($post->comments as $comment)
-                        <x-panel>
-                            <x-post-comment :comment="$comment"/>
-                        </x-panel>
-                    @endforeach
-                </section>
+                    <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                        @foreach($post->comments as $comment)
+                            <x-panel>
+                                <x-post-comment :comment="$comment"/>
+                            </x-panel>
+                        @endforeach
+                    </section>
 
             </article>
         </main>

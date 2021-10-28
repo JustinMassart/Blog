@@ -4,7 +4,7 @@
 <link href="https://unpkg.com/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="//unpkg.com/alpinejs" defer></script>
+<script src="{{asset('js/app.js')}}" defer></script>
 <style>
     html {
         scroll-behavior: smooth;
@@ -24,8 +24,22 @@
                 <a href="/register" class="text-xs font-bold uppercase">Register</a>
                 <a href="/login" class="ml-6 text-xs font-bold uppercase">Login</a>
             @else
-                <span class="text-xs font-bold uppercase">Welcome back, {{ auth()->user()->name }} !</span>
-
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button class="text-xs font-bold uppercase">Welcome back, {{ auth()->user()->name }} !</button>
+                    </x-slot>
+                    <x-slot name="entries">
+                        @can('admin')
+                            <x-dropdown-item href="/admin/posts/create"
+                                             :active="request()->routeIs('/admin/posts/create')">New Post
+                            </x-dropdown-item>
+                            <x-dropdown-item href="/admin/dashboard" :active="request()->routeIs('/admin/dashboard')">
+                                Dashboard
+                            </x-dropdown-item>
+                        @endcan
+                        <x-dropdown-item href="#">Logout</x-dropdown-item>
+                    </x-slot>
+                </x-dropdown>
                 <form action="/logout" method="POST" class="text-xs uppercase ml-4 text-blue-500">
                     @csrf
                     <button type="submit">Logout</button>
