@@ -37,10 +37,10 @@
                                 Dashboard
                             </x-dropdown-item>
                         @endcan
-                        <x-dropdown-item href="#">Logout</x-dropdown-item>
+                        <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Logout</x-dropdown-item>
                     </x-slot>
                 </x-dropdown>
-                <form action="/logout" method="POST" class="text-xs uppercase ml-4 text-blue-500">
+                <form id="logout-form" action="/logout" method="POST" class="hidden">
                     @csrf
                     <button type="submit">Logout</button>
                 </form>

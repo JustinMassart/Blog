@@ -1,16 +1,18 @@
 <x-layout>
-
     <x-slot name="title">
         <title>
             La liste des posts
         </title>
     </x-slot>
-
     <x-slot name="mainContent">
         <main class="mx-auto mt-10 space-y-6 max-w-6xl lg:mt-20">
             <article class="gap-x-10 mx-auto max-w-4xl lg:grid lg:grid-cols-12">
                 <div class="col-span-4 mb-10 lg:text-center lg:pt-14">
-                    <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="Thumbnail picture" class="rounded-xl">
+                    @if(!isset($post->thumbnail_path))
+                        <img src="/images/illustration-3.png" alt="thumbnail" class="rounded-xl">
+                    @else
+                        <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="thumbnail" class="rounded-xl">
+                    @endif
                     <p class="block mt-4 text-xs text-gray-400">
                         Published
                         <time>{{$post->published_at->diffForHumans()}}</time>

@@ -49,7 +49,6 @@ class PostController extends Controller
             'category_id' => ['required', Rule::exists('categories', 'id')],
         ]);
 
-
         $attributes['user_id'] = auth()->id();
         $attributes['published_at'] = now('Europe/Brussels');
         $attributes['thumbnail_path'] = request()->file('thumbnail')?->store('thumbnails');

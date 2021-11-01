@@ -11,8 +11,9 @@ class MustBeAdministratorMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()?->username!=='JustinMassart')
-        abort(ResponseAlias::HTTP_FORBIDDEN);
+        if (auth()->user()?->username !== 'JustinMassart') {
+            abort(ResponseAlias::HTTP_FORBIDDEN);
+        }
         return $next($request);
     }
 }

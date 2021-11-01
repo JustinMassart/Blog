@@ -3,13 +3,17 @@
     class="rounded-xl border border-black border-opacity-0 transition-colors duration-300 hover:bg-gray-100 hover:border-opacity-5">
     <div class="px-5 py-6 lg:flex">
         <div class="flex-1 lg:mr-8">
-            <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+            @if(isset($post->thumbnail_path))
+                <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="thumbnail" class="rounded-xl">
+            @else
+                <img src="/images/illustration-3.png" alt="thumbnail" class="rounded-xl">
+            @endif
         </div>
 
         <div class="flex flex-col flex-1 justify-between">
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
-                    <x-category-button :category="$post->category" />
+                    <x-category-button :category="$post->category"/>
                 </div>
 
                 <div class="mt-4">
@@ -27,12 +31,13 @@
             </header>
 
             <div class="mt-2 space-y-4 text-sm">
-                    {!! $post->excerpt !!}
+                {!! $post->excerpt !!}
             </div>
 
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="thumbnail">
+                    <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="A random picture" width="60"
+                         height="60" class="rounded-xl">
                     <div class="ml-3">
                         <h5 class="text-xl font-bold">
                             <a class="font-bold" href="/?author={{$post->author->username}}">
