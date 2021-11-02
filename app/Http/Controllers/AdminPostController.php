@@ -22,14 +22,7 @@ class AdminPostController
 
     public function store()
     {
-        $attributes = request()->validate([
-            'title' => 'required|max:255',
-            'slug' => ['required', Rule::unique('posts', 'slug'), 'max:255'],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'thumbnail' => 'image',
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+        $attributes = $this->validatePost();
 
         $attributes['user_id'] = auth()->id();
         $attributes['published_at'] = now('Europe/Brussels');
@@ -53,16 +46,9 @@ class AdminPostController
     public function update(Post $post)
     {
 
-        $attributes = request()->validate([
-            'title' => 'required|max:255',
-            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id), 'max:255'],
-            'excerpt' => 'required',
-            'body' => 'required',
-            'thumbnail' => 'image',
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+        $attributes = $this->validatePost();
 
-        if (isset($attributes['thumbnail'])) {
+        if ($attributes['thumbnail'] ?? false) {
             $attributes['thumbnail_path'] = request()->file('thumbnail')?->store('thumbnails');
         }
 
@@ -77,6 +63,24 @@ class AdminPostController
         $post->delete();
 
         return back()->with('success', 'The post has been deleted successfully !');
+    }
+
+    /**
+     * @param Post $post
+     * @return array
+     */
+    protected function validatePost(?Post $post = null): array
+    {
+        $post ??= new Post();
+
+        return request()->validate([
+            'title' => 'required|max:255',
+            'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post), 'max:255'],
+            'excerpt' => 'required',
+            'body' => 'required',
+            'thumbnail' => 'image',
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+        ]);
     }
 
 }

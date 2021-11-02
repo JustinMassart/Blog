@@ -26,9 +26,7 @@
                                         <form action="/admin/posts/{{ $post->id }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-
                                             <button class="text-xs text-gray-400 hover:text-red-500">Delete</button>
-
                                         </form>
                                     </td>
                                 </tr>
