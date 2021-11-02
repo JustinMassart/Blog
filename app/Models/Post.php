@@ -39,6 +39,8 @@ use
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read int|null $comments_count
+ * @property string|null $thumbnail_path
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereThumbnailPath($value)
  */
 class Post extends Model
 {

@@ -2,8 +2,8 @@
     <x-setting heading="Publish a new post !">
         <form action="/admin/posts" method="POST" x-data="{}" enctype="multipart/form-data">
             @csrf
-            <x-form.input name="title"/>
-            <x-form.input name="slug"/>
+            <x-form.input name="title" x-ref="newtitle" @input="$refs.slugfield.value = slugify($refs.newtitle.value,'-').toLowerCase()"/>
+            <x-form.input name="slug" x-ref="slugfield"/>
 
             <x-form.textarea name="excerpt" rows="2"/>
             <x-form.textarea name="body" rows="10"/>
