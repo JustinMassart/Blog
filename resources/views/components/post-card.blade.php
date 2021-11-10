@@ -36,16 +36,16 @@
                 <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="A random picture" width="60"
                      height="60" class="rounded-xl">
                 <div class="ml-3">
-                    <a class="text-xl font-bold" href="/?author={{$post->author->username}}">
+                    <a class="text-lg font-bold" href="/?author={{$post->author->username}}">
                         {{$post->author->name}}
                     </a>
-                    <h6>Mascot at Laracasts</h6>
+                    <h6 class="text-xs">Mascot at Laracasts</h6>
                 </div>
             </div>
 
             <div>
                 <a href="/posts/{{$post->slug}}"
-                   class="px-8 py-2 text-xs font-semibold bg-gray-200 rounded-full transition-colors duration-300 hover:bg-gray-300"
+                   class="px-4 py-2 text-xs font-semibold bg-gray-200 rounded-full transition-colors duration-300 hover:bg-gray-300"
                 >Read More</a>
             </div>
         </footer>
