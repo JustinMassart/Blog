@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        User::factory(20)->create();
-        Category::factory(15)->create();
-        Post::factory(600)->create();
-        Comment::factory(1200)->create();
+        User::factory(15)->create();
+        Category::factory(7)->create();
+        Post::factory(100)->create();
+        Comment::factory(300)->create();
     }
 }

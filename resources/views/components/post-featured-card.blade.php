@@ -3,17 +3,16 @@
     class="rounded-xl border border-black border-opacity-0 transition-colors duration-300 hover:bg-gray-100 hover:border-opacity-5">
     <div class="px-5 py-6 lg:flex">
         <div class="flex-1 lg:mr-8">
-            @if(isset($post->thumbnail_path))
-                <img src="{{asset('storage/'.$post->thumbnail_path)}}" alt="thumbnail" class="rounded-xl">
+            @if( isset($post->thumbnail_path) )
+                <img src="{{ asset('storage'.$post->thumbnail_path) }}" alt="thumbnail1" class="rounded-xl">
             @else
-                <img src="/images/illustration-3.png" alt="thumbnail" class="rounded-xl">
+                <img src="/images/illustration-3.png" alt="thumbnail2" class="rounded-xl">
             @endif
         </div>
-
         <div class="flex flex-col flex-1 justify-between">
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
-                    <x-category-button :category="$post->category"/>
+                    <x-category-button :category="$post->category" />
                 </div>
 
                 <div class="mt-4">

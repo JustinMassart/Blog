@@ -11,7 +11,7 @@ class AdminPostController
     public function index()
     {
         return view('admin.posts.index', [
-            'posts' => Post::paginate(25)
+            'posts' => Post::paginate(150)
         ]);
     }
 
